@@ -7,8 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'advanced-level-component';
+  durations = [3, 20, 185];
   time = 0;
   showAlertView = false;
+  showAlertTimerFinished = false;
   handleClickShowTimer() {
     this.showAlertView = true;
   }
@@ -22,6 +24,12 @@ export class AppComponent {
     this.showAlertView = false;
   }
   onSubmitTime() {
-    console.log(this.time);
+    this.durations.push(this.time);
+  }
+  onClickCanlTimerWasFinished() {
+    this.showAlertTimerFinished = false;
+  }
+  onCompletTimer() {
+    this.showAlertTimerFinished = true;
   }
 }

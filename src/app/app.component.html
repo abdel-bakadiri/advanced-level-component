@@ -1,8 +1,17 @@
 <div>
-  <h1>Timers</h1>
-  <app-timer [init]="3"></app-timer>
-  <app-timer [init]="20"></app-timer>
-  <app-timer [init]="185"></app-timer>
+  <app-tabs>
+    <app-tab title="Timers">
+      <h1>Timers</h1>
+      <app-timer
+        *ngFor="let duration of durations"
+        (onComplete)="onCompletTimer()"
+        [init]="duration"
+      ></app-timer>
+    </app-tab>
+    <app-tab title="Crono"> Chrono description </app-tab>
+    <app-tab title="Alarm"> Alarm description </app-tab>
+    <app-tab title="others"> Alarm description </app-tab>
+  </app-tabs>
   <button class="add" (click)="handleClickShowTimer()">+</button>
   <app-alert-view
     [hidden]="!showAlertView"
@@ -15,8 +24,19 @@
       <input [(ngModel)]="time" type="number" />
     </div>
     <div class="btns">
-      <button (click)="onClickCancel()">Cancel</button>
+      <button class="cancel-button" (click)="onClickCancel()">Cancel</button>
       <button class="btn-ok" (click)="onSubmitTime()">Ok</button>
+    </div>
+  </app-alert-view>
+  <app-alert-view [hidden]="!showAlertTimerFinished">
+    <h1 head>End Timer!</h1>
+    <div class="message">
+      <p>The timer was finished !</p>
+    </div>
+    <div class="btns">
+      <button class="cancel-button" (click)="onClickCanlTimerWasFinished()">
+        Cancel
+      </button>
     </div>
   </app-alert-view>
 </div>

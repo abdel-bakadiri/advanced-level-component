@@ -52,8 +52,12 @@
     }
   }
   .btns {
-    .btn-ok {
-      margin-left: 5px;
+    .cancel-button {
+      margin-right: 5px;
+      background-color: #bcbbbb;
+      &:hover {
+        background-color: #6c6c6c;
+      }
     }
   }
 }
