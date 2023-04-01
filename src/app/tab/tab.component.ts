@@ -1,6 +1,6 @@
 import { TabsComponent } from './../tabs/tabs.component';
 import { TabModel } from './../model/tab-model';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-tab',
@@ -8,12 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./tab.component.scss'],
 })
 export class TabComponent implements OnInit, TabModel {
+  @Output() onClick: EventEmitter<void> = new EventEmitter<void>();
   @Input() title!: string;
   public isActive = false;
 
-  constructor(private tabs: TabsComponent) {}
+  constructor() {}
 
-  ngOnInit(): void {
-    this.tabs.addTab(this);
+  ngOnInit(): void {}
+
+  handelClickTabContent() {
+    this.onClick.emit();
   }
 }
