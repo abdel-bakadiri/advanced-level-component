@@ -7,6 +7,7 @@ import { DisplayComponent } from './child-components/display/display.component';
 import { ProgressBarComponent } from './child-components/progress-bar/progress-bar.component';
 import { TimerComponent } from './containers/timer/timer.component';
 import { AlertViewComponent } from './shared/alert-view/alert-view.component';
+import { SimpleAlertViewComponent } from './simple-alert-view/simple-alert-view.component';
 import { TabComponent } from './tab/tab.component';
 import { TabsComponent } from './tabs/tabs.component';
 
@@ -19,6 +20,7 @@ import { TabsComponent } from './tabs/tabs.component';
     AlertViewComponent,
     TabComponent,
     TabsComponent,
+    SimpleAlertViewComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
