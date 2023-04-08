@@ -21,7 +21,7 @@
     <h1 head>Add new timer</h1>
     <div class="message">
       <label>Set the number of seconds for your timer</label>
-      <input [(ngModel)]="time" type="number" />
+      <input [(ngModel)]="time" type="number" #input />
     </div>
     <div class="btns">
       <button class="cancel-button" (click)="onClickCancel()">Cancel</button>
@@ -39,5 +39,6 @@
       </button>
     </div>
   </app-alert-view>
-  <app-simple-alert-view></app-simple-alert-view>
+  <app-simple-alert-view [title]="'Hello'" [message]="'Welocm to our app'">
+  </app-simple-alert-view>
 </div>

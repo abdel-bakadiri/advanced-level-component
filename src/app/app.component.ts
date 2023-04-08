@@ -3,6 +3,7 @@ import {
   AfterViewInit,
   ChangeDetectorRef,
   Component,
+  ElementRef,
   OnDestroy,
   ViewChild,
 } from '@angular/core';
@@ -17,6 +18,7 @@ export class AppComponent
   implements AfterViewInit, AfterContentInit, OnDestroy
 {
   @ViewChild(SimpleAlertViewComponent) alert!: SimpleAlertViewComponent;
+  @ViewChild('input') inputTime!: ElementRef;
   title = 'advanced-level-component';
   durations = [3, 20, 185];
   time = 0;
@@ -26,11 +28,11 @@ export class AppComponent
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
   ngAfterContentInit(): void {}
   ngAfterViewInit(): void {
-    this.alert.visible = true;
-    this.alert.title = 'Alert';
-    this.alert.message = 'Welcome the world of Angular';
-    this.changeDetectorRef.detectChanges();
-    this.setTimeoutRef = setTimeout(() => {});
+    console.log('👀 Get input', this.inputTime.nativeElement);
+    if (this.inputTime?.nativeElement) {
+      this.inputTime.nativeElement.setAttribute('placeholder', 'test');
+      this.inputTime.nativeElement.classList.add('input-border');
+    }
   }
 
   handleClickShowTimer() {

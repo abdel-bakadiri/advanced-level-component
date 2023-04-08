@@ -9,8 +9,8 @@ export class SimpleAlertViewComponent implements OnInit {
   constructor() {}
 
   @Output() onDismiss: EventEmitter<void> = new EventEmitter<void>();
-  message!: string;
-  title!: string;
+  @Input() title!: string;
+  @Input() message!: string;
   public visible: boolean = true;
 
   ngOnInit() {}
