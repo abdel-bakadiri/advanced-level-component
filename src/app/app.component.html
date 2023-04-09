@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
   <app-tabs>
     <app-tab title="Timers">
       <h1>Timers</h1>
@@ -10,7 +10,7 @@
     </app-tab>
     <app-tab title="Crono"> Chrono description </app-tab>
     <app-tab title="Alarm"> Alarm description </app-tab>
-    <!-- <app-tab title="others"> Alarm description </app-tab> -->
+    <app-tab title="others"> Alarm description </app-tab>
   </app-tabs>
   <button class="add" (click)="handleClickShowTimer()">+</button>
   <app-alert-view
@@ -41,4 +41,21 @@
   </app-alert-view>
   <app-simple-alert-view [title]="'Hello'" [message]="'Welocm to our app'">
   </app-simple-alert-view>
-</div>
+</div> -->
+<ng-template let-title let-message="message" #templateRef>
+  <h1>{{ title }}</h1>
+  <p>{{ message }}</p>
+</ng-template>
+<ng-container
+  [ngTemplateOutlet]="templateRef"
+  [ngTemplateOutletContext]="{
+    $implicit: 'Expertise Angular',
+    message: 'message'
+  }"
+></ng-container>
+<br />
+<ng-container [ngTemplateOutlet]="templateRef"></ng-container>
+<br />
+<ng-container [ngTemplateOutlet]="templateRef"></ng-container>
+<br />
+<ng-container [ngTemplateOutlet]="templateRef"></ng-container>

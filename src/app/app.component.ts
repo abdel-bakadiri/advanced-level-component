@@ -6,6 +6,7 @@ import {
   ElementRef,
   OnDestroy,
   ViewChild,
+  Renderer2,
 } from '@angular/core';
 import { SimpleAlertViewComponent } from './simple-alert-view/simple-alert-view.component';
 
@@ -25,18 +26,27 @@ export class AppComponent
   showAlertView = false;
   showAlertTimerFinished = false;
   setTimeoutRef: any;
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  constructor(
+    private changeDetectorRef: ChangeDetectorRef,
+    private renderer2: Renderer2
+  ) {}
   ngAfterContentInit(): void {}
   ngAfterViewInit(): void {
-    console.log('👀 Get input', this.inputTime.nativeElement);
-    if (this.inputTime?.nativeElement) {
-      this.inputTime.nativeElement.setAttribute('placeholder', 'test');
-      this.inputTime.nativeElement.classList.add('input-border');
+    if (this.inputTime) {
+      this.renderer2.setAttribute(
+        this.inputTime.nativeElement,
+        'placeholder',
+        'set seconds'
+      );
+      this.renderer2.addClass(this.inputTime.nativeElement, 'input-border');
     }
   }
 
   handleClickShowTimer() {
     this.showAlertView = true;
+    setTimeout(() => {
+      this.renderer2.selectRootElement(this.inputTime.nativeElement).focus();
+    });
   }
   onEmitCancel() {
     this.showAlertView = false;
