@@ -42,7 +42,7 @@
   <app-simple-alert-view [title]="'Hello'" [message]="'Welocm to our app'">
   </app-simple-alert-view>
 </div> -->
-<ng-template let-title let-message="message" #templateRef>
+<!-- <ng-template let-title let-message="message" #templateRef>
   <h1>{{ title }}</h1>
   <p>{{ message }}</p>
 </ng-template>
@@ -58,4 +58,6 @@
 <br />
 <ng-container [ngTemplateOutlet]="templateRef"></ng-container>
 <br />
-<ng-container [ngTemplateOutlet]="templateRef"></ng-container>
+<ng-container [ngTemplateOutlet]="templateRef"></ng-container> -->
+<button (click)="handelClick()">Create a component</button>
+<ng-template #container></ng-template>

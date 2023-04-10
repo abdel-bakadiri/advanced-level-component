@@ -7,6 +7,7 @@ import {
   OnDestroy,
   ViewChild,
   Renderer2,
+  ViewContainerRef,
 } from '@angular/core';
 import { SimpleAlertViewComponent } from './simple-alert-view/simple-alert-view.component';
 
@@ -18,7 +19,10 @@ import { SimpleAlertViewComponent } from './simple-alert-view/simple-alert-view.
 export class AppComponent
   implements AfterViewInit, AfterContentInit, OnDestroy
 {
-  @ViewChild(SimpleAlertViewComponent) alert!: SimpleAlertViewComponent;
+  @ViewChild('container', { read: ViewContainerRef })
+  container!: ViewContainerRef;
+  @ViewChild(SimpleAlertViewComponent)
+  alert!: SimpleAlertViewComponent;
   @ViewChild('input') inputTime!: ElementRef;
   title = 'advanced-level-component';
   durations = [3, 20, 185];
@@ -72,5 +76,10 @@ export class AppComponent
 
   ngOnDestroy(): void {
     clearTimeout(this.setTimeoutRef);
+  }
+  handelClick() {
+    if (this.container) {
+      this.container.createComponent(SimpleAlertViewComponent);
+    }
   }
 }
